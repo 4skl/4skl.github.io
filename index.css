@@ -364,6 +364,12 @@ header {
     transform: scale(1.05);
 }
 
+.footer-text {
+    text-align: center;
+    color: var(--overlay-light-80);
+    margin-top: 2rem;
+}
+
 .darkmode-toggle {
     position: fixed;
     top: 2rem;
