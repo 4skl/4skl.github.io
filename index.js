@@ -56,11 +56,19 @@ function initializeDarkMode() {
 /** Language switching functionality **/
 function initializeLanguage() {
     // Check for saved language preference, otherwise use browser language
-    const savedLang = localStorage.getItem('language');
-    const browserLang = navigator.language.startsWith('fr') ? 'fr' : 'en';
-    const currentLang = savedLang || browserLang;
-    
-    setLanguage(currentLang);
+    let savedLang = localStorage.getItem('language');
+    let browserLang = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
+    let lang = 'en';
+    if (!savedLang) {
+        if (browserLang.startsWith('fr')) {
+            lang = 'fr';
+        }
+        // Save the detected language so toggle works as expected
+        localStorage.setItem('language', lang);
+    } else {
+        lang = savedLang;
+    }
+    setLanguage(lang);
 }
 
 function toggleLanguage() {
