@@ -190,11 +190,13 @@ header {
     padding: 1rem;
     border-radius: 10px;
     text-align: center;
-    transition: background 0.3s ease;
+    transition: background 0.3s ease, transform 0.2s cubic-bezier(.4,2,.6,1);
 }
 
 .contact-item:hover {
     background: rgba(255,255,255,0.2);
+    transform: scale(1.08);
+    box-shadow: 0 8px 24px 0 rgba(0,0,0,0.18), 0 1.5px 6px 0 rgba(0,0,0,0.10);
 }
 
 .contact-item a {
@@ -365,6 +367,12 @@ header {
     height: 50px;
     margin: 0 auto;
     border-radius: 40px;
+    transition: transform 0.2s cubic-bezier(.4,2,.6,1);
+}
+
+.darkmode-toggle:hover {
+    transform: scale(1.12);
+    box-shadow: 0 8px 24px 0 rgba(0,0,0,0.18), 0 1.5px 6px 0 rgba(0,0,0,0.10);
 }
 
 .language-toggle {
@@ -374,21 +382,31 @@ header {
     z-index: 1000;
 }
 
+
 .language-toggle button {
-    background: rgba(0, 0, 0, 0.8);
-    color: white;
-    border: 2px solid rgba(255, 255, 255, 0.3);
+    background: transparent;
+    color: #222;
+    border: 2px solid rgba(255, 255, 255, 0.5);
     border-radius: 25px;
-    padding: 0.5rem 1rem;
+    padding: 0em 0.5em;
     cursor: pointer;
     font-weight: bold;
     transition: all 0.3s ease;
-    font-size: 0.9rem;
+    font-size: 1.4rem;
+    box-shadow: none;
+    transition: all 0.3s ease, transform 0.2s cubic-bezier(.4,2,.6,1);
+}
+
+.dark-theme .language-toggle button {
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    border: 2px solid rgba(255, 255, 255, 0.3);
 }
 
 .language-toggle button:hover {
-    background: rgba(255, 255, 255, 0.2);
-    border-color: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.12);
+    box-shadow: 0 8px 24px 0 rgba(0,0,0,0.18), 0 1.5px 6px 0 rgba(0,0,0,0.10);
 }
 
 .darkmode-toggle > input[type="checkbox"] {
