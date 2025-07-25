@@ -14,21 +14,23 @@
     <script src="index.js"></script>
 </head>
 <body>
+    <!-- Dark mode toggle -->
+    <div class="darkmode-toggle" id="darkmode-toggle-button" 
+         data-en="Toggle dark/light mode" 
+         data-fr="Basculer mode sombre/clair">
+        <input type="checkbox" id="dark-mode-checkbox" aria-label="Toggle dark mode">
+        <span></span>
+    </div>
+
+    <!-- Language toggle -->
+    <div class="language-toggle" id="language-toggle-button">
+        <button onclick="toggleLanguage()">
+            <span id="lang-button-text">🇫🇷</span>
+        </button>
+    </div>
+    
     <div class="container">
         <header>
-            <!-- Dark mode toggle -->
-            <div class="darkmode-toggle" id="darkmode-toggle-button" title="Toggle dark/light mode">
-                <input type="checkbox" id="dark-mode-checkbox" aria-label="Toggle dark mode">
-                <span></span>
-            </div>
-
-            <!-- Language toggle -->
-            <div class="language-toggle" id="language-toggle-button">
-                <button onclick="toggleLanguage()">
-                    <span id="lang-button-text">🇫🇷</span>
-                </button>
-            </div>
-            
             <h1 class="logo">4skl</h1>
             <p class="tagline" data-en="Freelance Developer & IT Solutions" data-fr="Développeur Freelance & Solutions Informatiques">Freelance Developer & IT Solutions</p>
             <p style="color: rgba(255,255,255,0.8); font-size: 1rem;" data-en="Passionate French developer specializing in web development, software solutions, and technical troubleshooting" data-fr="Développeur français passionné spécialisé dans le développement web, les solutions logicielles et le dépannage technique">Passionate French developer specializing in web development, software solutions, and technical troubleshooting</p>

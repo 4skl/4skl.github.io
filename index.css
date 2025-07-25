@@ -144,7 +144,6 @@ html:not(.dark-theme) .social-link:hover {
 header {
     text-align: center;
     margin-bottom: 3rem;
-    position: relative;
     max-width: 900px;
     margin-left: auto;
     margin-right: auto;
@@ -366,9 +365,9 @@ header {
 }
 
 .darkmode-toggle {
-    position: absolute;
-    top: -10px;
-    right: -10px;
+    position: fixed;
+    top: 2rem;
+    right: calc(50% - 450px + 2rem);
     z-index: 1000;
     width: 50px;
     height: 50px;
@@ -377,16 +376,30 @@ header {
     transition: transform 0.2s cubic-bezier(.4,2,.6,1);
 }
 
+/* Fallback for smaller screens */
+@media (max-width: 1240px) {
+    .darkmode-toggle {
+        right: 2rem;
+    }
+}
+
 .darkmode-toggle:hover {
     transform: scale(1.12);
     box-shadow: 0 8px 24px 0 var(--shadow-dark-18), 0 1.5px 6px 0 var(--shadow-dark-10);
 }
 
 .language-toggle {
-    position: absolute;
-    top: -10px;
-    left: -10px;
+    position: fixed;
+    top: 2rem;
+    left: calc(50% - 450px + 2rem);
     z-index: 1000;
+}
+
+/* Fallback for smaller screens */
+@media (max-width: 1240px) {
+    .language-toggle {
+        left: 2rem;
+    }
 }
 
 
@@ -482,11 +495,11 @@ header {
 
 /* Tooltip for dark mode toggle */
 .darkmode-toggle::after {
-    content: attr(title);
+    content: attr(data-tooltip);
     position: absolute;
-    top: 60px;
-    left: 50%;
-    transform: translateX(-50%);
+    top: 50%;
+    right: 60px;
+    transform: translateY(-50%);
     background: var(--overlay-dark-80);
     color: var(--text-white);
     padding: 0.5rem 0.8rem;
@@ -517,24 +530,21 @@ header {
     
     header {
         margin-bottom: 2rem;
-        margin-top: 1rem;
+        margin-top: 3rem;
     }
     
     .darkmode-toggle {
-        top: -0.5rem;
-        right: -0.5rem;
-        margin: 0.5rem;
+        top: 1rem;
+        right: 1rem;
     }
     
     .language-toggle {
-        top: -0.5rem;
-        left: -0.5rem;
-        margin: 0.5rem;
+        top: 1rem;
+        left: 1rem;
     }
     
     .logo {
         font-size: 2rem;
-        margin-top: 1.5rem;
     }
     
     .main-content {

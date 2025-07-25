@@ -89,7 +89,12 @@ function setLanguage(lang) {
     document.querySelectorAll('[data-en][data-fr]').forEach(element => {
         const text = element.getAttribute('data-' + lang);
         if (text) {
-            element.textContent = text;
+            // For the dark mode toggle, set the data-tooltip attribute for CSS
+            if (element.classList.contains('darkmode-toggle')) {
+                element.setAttribute('data-tooltip', text);
+            } else {
+                element.textContent = text;
+            }
         }
     });
     
