@@ -476,6 +476,36 @@ header {
     box-shadow: var(--white-glow);
 }
 
+/* Tooltip for dark mode toggle */
+.darkmode-toggle::after {
+    content: attr(title);
+    position: absolute;
+    top: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--overlay-dark-80);
+    color: var(--text-white);
+    padding: 0.5rem 0.8rem;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1001;
+    pointer-events: none;
+}
+
+.darkmode-toggle:hover::after {
+    opacity: 1;
+    visibility: visible;
+}
+
+.dark-theme .darkmode-toggle::after {
+    background: var(--overlay-light-90);
+    color: var(--text-dark);
+}
+
 @media (max-width: 768px) {
     .container {
         padding: 1rem;
