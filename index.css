@@ -15,10 +15,6 @@
     --text-light-gray: #e0e0e0;
     --text-dark: #222;
     
-    /* Accent colors */
-    --accent-green: #4CAF50;
-    --accent-black: #000;
-    
     /* Gradient colors - Light theme */
     --gradient-light-start: #196dfd;
     --gradient-light-end: #026383;
@@ -222,7 +218,6 @@ header {
     content: "✓";
     position: absolute;
     left: 0;
-    color: var(--accent-green);
     font-weight: bold;
 }
 
@@ -336,7 +331,6 @@ header {
 .blog-arrow {
     display: inline-block;
     font-size: 1.5rem;
-    color: var(--accent-green);
     transition: transform 0.3s ease;
 }
 
