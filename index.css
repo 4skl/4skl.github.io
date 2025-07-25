@@ -1,0 +1,461 @@
+/* Custom styles for the 4skl landing page */
+@import url('https://fonts.googleapis.com/css2?family=Dosis&display=swap');
+
+/* CSS Variables for theming */
+:root {
+    --background-color: #fff;
+    --color-primary: #ccc;
+    --color-secondary: #aaa;
+    --font-color: #000;
+    --font-color-secondary: #222;
+}
+
+.dark-theme {
+    --background-color: #222;
+    --color-primary: #444;
+    --color-secondary: #666;
+    --font-color: #fff;
+    --font-color-secondary: #aaa;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.dark-theme body {
+    color: #e0e0e0;
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+}
+
+/* Light theme specific styles */
+html:not(.dark-theme) body {
+    color: #333;
+    background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+}
+
+html:not(.dark-theme) .card {
+    background: rgba(255,255,255,0.2);
+    border: 1px solid rgba(255,255,255,0.3);
+}
+
+html:not(.dark-theme) .card h2 {
+    color: #fff;
+}
+
+html:not(.dark-theme) .card p {
+    color: rgba(255,255,255,0.9);
+}
+
+html:not(.dark-theme) .services-list li {
+    color: rgba(255,255,255,0.95);
+}
+
+html:not(.dark-theme) .contact-item {
+    background: rgba(255,255,255,0.15);
+}
+
+html:not(.dark-theme) .contact-item:hover {
+    background: rgba(255,255,255,0.25);
+}
+
+html:not(.dark-theme) .project-card {
+    background: rgba(255,255,255,0.15);
+}
+
+html:not(.dark-theme) .blog-card {
+    background: rgba(255,255,255,0.2);
+    border: 2px solid rgba(255,255,255,0.3);
+}
+
+html:not(.dark-theme) .blog-card:hover {
+    border-color: rgba(255,255,255,0.5);
+}
+
+html:not(.dark-theme) .social-link {
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+}
+
+html:not(.dark-theme) .social-link:hover {
+    background: rgba(255,255,255,0.25);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.logo {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 0.5rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.tagline {
+    font-size: 1.2rem;
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 2rem;
+}
+
+.main-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.card {
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 2rem;
+    border: 1px solid rgba(255,255,255,0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+}
+
+.card h2 {
+    color: #fff;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.card p {
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 1rem;
+}
+.card.contact-card {
+    grid-column: span 2;
+    min-width: 0;
+}
+
+.services-list {
+    list-style: none;
+    margin: 1rem 0;
+}
+
+.services-list li {
+    color: rgba(255,255,255,0.9);
+    margin: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.services-list li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #4CAF50;
+    font-weight: bold;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.contact-item {
+    background: rgba(255,255,255,0.1);
+    padding: 1rem;
+    border-radius: 10px;
+    text-align: center;
+    transition: background 0.3s ease;
+}
+
+.contact-item:hover {
+    background: rgba(255,255,255,0.2);
+}
+
+.contact-item a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.contact-item a:hover {
+    text-decoration: underline;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.project-card {
+    background: rgba(255,255,255,0.1);
+    padding: 1.5rem;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-3px);
+}
+
+.project-card h3 {
+    color: #fff;
+    margin-bottom: 0.5rem;
+}
+
+.project-card p {
+    color: rgba(255,255,255,0.8);
+    font-size: 0.9rem;
+}
+
+.project-status {
+    display: inline-block;
+    background: #4CAF50;
+    color: white;
+    padding: 0.2rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+}
+
+.project-status.beta {
+    background: #FF9800;
+}
+
+.project-status.prototype {
+    background: #2196F3;
+}
+
+.blog-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 1rem;
+}
+
+.blog-description h3 {
+    color: #fff;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.blog-cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.blog-link {
+    text-decoration: none;
+    color: inherit;
+    width: 100%;
+}
+
+.blog-card {
+    background: rgba(255,255,255,0.15);
+    padding: 2rem;
+    border-radius: 15px;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 2px solid rgba(255,255,255,0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.blog-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    transition: left 0.5s;
+}
+
+.blog-card:hover::before {
+    left: 100%;
+}
+
+.blog-card:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    border-color: rgba(255,255,255,0.4);
+}
+
+.blog-card h3 {
+    color: #fff;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.blog-card p {
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+}
+
+.blog-arrow {
+    display: inline-block;
+    font-size: 1.5rem;
+    color: #4CAF50;
+    transition: transform 0.3s ease;
+}
+
+.blog-card:hover .blog-arrow {
+    transform: translateX(10px);
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.social-link {
+    background: rgba(255,255,255,0.1);
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.social-link:hover {
+    background: rgba(255,255,255,0.2);
+    transform: scale(1.05);
+}
+
+.darkmode-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    width: 50px;
+    height: 50px;
+    margin: 0 auto;
+    border-radius: 40px;
+}
+
+.darkmode-toggle > input[type="checkbox"] {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    margin: 0px;
+    cursor: pointer;
+    opacity: 0;
+    z-index: 2;
+}
+
+.darkmode-toggle > span {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    overflow: hidden;
+    opacity: 1;
+    background-color: #000;
+    border-radius: 40px;
+    transition: 0.2s ease background-color, 0.2s ease opacity;
+}
+
+.darkmode-toggle > span:before,
+.darkmode-toggle > span:after {
+    content: '';
+    position: absolute;
+    top: 5px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    transition: 0.2s ease transform, 0.2s ease background-color;
+}
+
+.darkmode-toggle > span:before {
+    background-color: var(--background-color);
+    transform: translate(-100px, 0px);
+    z-index: 1;
+}
+
+.darkmode-toggle > span:after {
+    background-color: #fff;
+    transform: translate(5px, 0px);
+    box-shadow: 0px 0px 10px #fff;
+    z-index: 0;
+}
+
+.darkmode-toggle > input[type="checkbox"]:checked + span {
+    background-color: #000;
+}
+
+.darkmode-toggle > input[type="checkbox"]:active + span {
+    opacity: 0.5;
+}
+
+.darkmode-toggle > input[type="checkbox"]:checked + span:before {
+    background-color: var(--background-color);
+    transform: translate(-7px, 0px);
+    box-shadow: 0px 0px 10px var(--background-color);
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+    
+    .logo {
+        font-size: 2rem;
+    }
+    
+    .main-content {
+        grid-template-columns: 1fr;
+    }
+
+    .card.contact-card {
+        grid-column: span 1;
+    }
+    
+    .social-links {
+        flex-direction: row;
+        align-items: center;
+    }
+    
+    .blog-content {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .blog-card {
+        padding: 1.5rem;
+    }
+}
