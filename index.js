@@ -53,10 +53,57 @@ function initializeDarkMode() {
     });
 }
 
+/** Language switching functionality **/
+function initializeLanguage() {
+    // Check for saved language preference, otherwise use browser language
+    const savedLang = localStorage.getItem('language');
+    const browserLang = navigator.language.startsWith('fr') ? 'fr' : 'en';
+    const currentLang = savedLang || browserLang;
+    
+    setLanguage(currentLang);
+}
+
+function toggleLanguage() {
+    const currentLang = localStorage.getItem('language') || 'en';
+    const newLang = currentLang === 'en' ? 'fr' : 'en';
+    setLanguage(newLang);
+    localStorage.setItem('language', newLang);
+}
+
+function setLanguage(lang) {
+    // Update button text with flags
+    const langButton = document.getElementById('lang-button-text');
+    if (langButton) {
+        langButton.textContent = lang === 'en' ? '🇫🇷' : '🇺🇸';
+    }
+    
+    // Update all elements with data attributes
+    document.querySelectorAll('[data-en][data-fr]').forEach(element => {
+        const text = element.getAttribute('data-' + lang);
+        if (text) {
+            element.textContent = text;
+        }
+    });
+    
+    // Update page title and description
+    if (lang === 'fr') {
+        document.title = '4skl - Développeur Freelance & Solutions Informatiques';
+        document.querySelector('meta[name="description"]').setAttribute('content', 
+            'Services professionnels de développement freelance et dépannage informatique. Spécialisé dans le développement web, solutions logicielles et support technique.');
+    } else {
+        document.title = '4skl - Freelance Developer & IT Solutions';
+        document.querySelector('meta[name="description"]').setAttribute('content', 
+            'Professional freelance developer and IT troubleshooting services. Specializing in web development, software solutions, and technical support.');
+    }
+}
+
 /** Initialize all functionality when DOM is loaded **/
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize dark mode
     initializeDarkMode();
+    
+    // Initialize language
+    initializeLanguage();
     
     // Smooth scrolling for better UX
     document.documentElement.style.scrollBehavior = 'smooth';

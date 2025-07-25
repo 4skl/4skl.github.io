@@ -19,26 +19,33 @@
         <input type="checkbox">
         <span></span>
     </div>
+
+    <!-- Language toggle -->
+    <div class="language-toggle" id="language-toggle-button">
+        <button onclick="toggleLanguage()">
+            <span id="lang-button-text">🇫🇷</span>
+        </button>
+    </div>
     
     <div class="container">
         <header>
             <h1 class="logo">4skl</h1>
-            <p class="tagline">Freelance Developer & IT Solutions</p>
-            <p style="color: rgba(255,255,255,0.8); font-size: 1rem;">Passionate French developer specializing in web development, software solutions, and technical troubleshooting</p>
+            <p class="tagline" data-en="Freelance Developer & IT Solutions" data-fr="Développeur Freelance & Solutions Informatiques">Freelance Developer & IT Solutions</p>
+            <p style="color: rgba(255,255,255,0.8); font-size: 1rem;" data-en="Passionate French developer specializing in web development, software solutions, and technical troubleshooting" data-fr="Développeur français passionné spécialisé dans le développement web, les solutions logicielles et le dépannage technique">Passionate French developer specializing in web development, software solutions, and technical troubleshooting</p>
         </header>
         
         <main class="main-content">
             <!-- Services Section -->
             <a href="mailto:contact+dev@4skl.com" style="text-decoration: none; color: inherit;">
                 <section class="card">
-                    <h2>🚀 Development Services</h2>
-                    <p>Professional software development and web solutions tailored to your needs.</p>
+                    <h2 data-en="🚀 Development Services" data-fr="🚀 Services de Développement">🚀 Development Services</h2>
+                    <p data-en="Professional software development and web solutions tailored to your needs." data-fr="Développement logiciel professionnel et solutions web adaptées à vos besoins.">Professional software development and web solutions tailored to your needs.</p>
                     <ul class="services-list">
-                        <li>Web Development (Frontend & Backend)</li>
-                        <li>Progressive Web Apps (PWA)</li>
-                        <li>Mobile Applications</li>
-                        <li>Custom Software Solutions</li>
-                        <li>API Development & Integration</li>
+                        <li data-en="Web Development (Frontend & Backend)" data-fr="Développement Web (Frontend & Backend)">Web Development (Frontend & Backend)</li>
+                        <li data-en="Progressive Web Apps (PWA)" data-fr="Applications Web Progressives (PWA)">Progressive Web Apps (PWA)</li>
+                        <li data-en="Mobile Applications" data-fr="Applications Mobiles">Mobile Applications</li>
+                        <li data-en="Custom Software Solutions" data-fr="Solutions Logicielles Sur-Mesure">Custom Software Solutions</li>
+                        <li data-en="API Development & Integration" data-fr="Développement & Intégration d'API">API Development & Integration</li>
                     </ul>
                 </section>
             </a>
@@ -46,22 +53,22 @@
             <!-- IT Support Section -->
             <a href="mailto:contact+troubleshoot@4skl.com" style="text-decoration: none; color: inherit;">
                 <section class="card">
-                    <h2>🔧 IT Troubleshooting</h2>
-                    <p>Expert technical support and problem-solving for individuals and businesses.</p>
+                    <h2 data-en="🔧 IT Troubleshooting" data-fr="🔧 Dépannage Informatique">🔧 IT Troubleshooting</h2>
+                    <p data-en="Expert technical support and problem-solving for individuals and businesses." data-fr="Support technique expert et résolution de problèmes pour particuliers et entreprises.">Expert technical support and problem-solving for individuals and businesses.</p>
                     <ul class="services-list">
-                        <li>System Diagnostics & Repair</li>
-                        <li>Network Configuration</li>
-                        <li>Performance Optimization</li>
-                        <li>Data Recovery Solutions</li>
-                        <li>Technical Consulting</li>
+                        <li data-en="System Diagnostics & Repair" data-fr="Diagnostics & Réparation Système">System Diagnostics & Repair</li>
+                        <li data-en="Network Configuration" data-fr="Configuration Réseau">Network Configuration</li>
+                        <li data-en="Performance Optimization" data-fr="Optimisation des Performances">Performance Optimization</li>
+                        <li data-en="Data Recovery Solutions" data-fr="Solutions de Récupération de Données">Data Recovery Solutions</li>
+                        <li data-en="Technical Consulting" data-fr="Conseil Technique">Technical Consulting</li>
                     </ul>
                 </section>
             </a>
             
             <!-- Contact Section -->
             <section class="card contact-card">
-                <h2>📞 Get In Touch</h2>
-                <p>Ready to start your project or needing help fixing an issue? Let's discuss your needs!</p>
+                <h2 data-en="📞 Get In Touch" data-fr="📞 Contactez-moi">📞 Get In Touch</h2>
+                <p data-en="Ready to start your project or needing help fixing an issue? Let's discuss your needs!" data-fr="Prêt à démarrer votre projet ou besoin d'aide pour résoudre un problème ? Discutons de vos besoins !">Ready to start your project or needing help fixing an issue? Let's discuss your needs!</p>
                 <div class="contact-grid">
                     <div class="contact-item">
                         <strong>Email</strong><br>
@@ -72,29 +79,29 @@
                         <a href="sms:+33745052024">07 45 05 20 24</a>
                     </div>
                 </div>
-                <p style="margin-top: 1rem; font-size: 0.9rem; color: rgba(255,255,255,0.7);">
+                <p style="margin-top: 1rem; font-size: 0.9rem; color: rgba(255,255,255,0.7);" data-en="Free consultation available!" data-fr="Consultation gratuite disponible !">
                     Free consultation available!
                 </p>
             </section>
             
             <!-- Blog & Portfolio Section -->
             <section class="card blog-section" style="grid-column: 1 / -1;">
-                <h2>📝 Blog & Portfolio</h2>
-                <p>Discover my latest articles, tutorials, and project showcases on my dedicated blog.</p>
+                <h2 data-en="📝 Blog & Portfolio" data-fr="📝 Blog & Portfolio">📝 Blog & Portfolio</h2>
+                <p data-en="Discover my latest articles, tutorials, and project showcases on my dedicated blog." data-fr="Découvrez mes derniers articles, tutoriels et présentations de projets sur mon blog dédié.">Discover my latest articles, tutorials, and project showcases on my dedicated blog.</p>
                 <div class="blog-content">
                     <div class="blog-description">
-                        <h3>What you'll find on my blog:</h3>
+                        <h3 data-en="What you'll find on my blog:" data-fr="Ce que vous trouverez sur mon blog :">What you'll find on my blog:</h3>
                         <ul class="services-list">
-                            <li>Project case studies and walkthroughs</li>
-                            <li>Problem-solving approaches</li>
-                            <li>Proofs of concept, ideas and prototypes</li>
+                            <li data-en="Project case studies and walkthroughs" data-fr="Études de cas et guides de projets">Project case studies and walkthroughs</li>
+                            <li data-en="Problem-solving approaches" data-fr="Approches de résolution de problèmes">Problem-solving approaches</li>
+                            <li data-en="Proofs of concept, ideas and prototypes" data-fr="Preuves de concept, idées et prototypes">Proofs of concept, ideas and prototypes</li>
                         </ul>
                     </div>
                     <div class="blog-cta">
                         <a href="https://blog.4skl.com" class="blog-link" target="_blank">
                             <div class="blog-card">
-                                <h3>Visit My Blog</h3>
-                                <p>Explore detailed articles about my projects, technical insights, and development journey.</p>
+                                <h3 data-en="Visit My Blog" data-fr="Visiter Mon Blog">Visit My Blog</h3>
+                                <p data-en="Explore detailed articles about my projects, technical insights, and development journey." data-fr="Explorez des articles détaillés sur mes projets, mes perspectives techniques et mon parcours de développement.">Explore detailed articles about my projects, technical insights, and development journey.</p>
                                 <span class="blog-arrow">→</span>
                             </div>
                         </a>
