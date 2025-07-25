@@ -131,7 +131,52 @@ document.addEventListener('DOMContentLoaded', function() {
             this.style.transform = 'translateY(0) scale(1)';
         });
     });
+    
+    // Initialize toggle fade on scroll
+    initializeToggleFade();
 });
+
+/** Toggle fade on scroll functionality **/
+function initializeToggleFade() {
+    const darkModeToggle = document.querySelector('.darkmode-toggle');
+    const languageToggle = document.querySelector('.language-toggle');
+    let ticking = false;
+    
+    function updateToggleOpacity() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const fadeStart = 50; // Start fading after 50px
+        const fadeEnd = 100;   // Completely hidden after 100px
+
+        let opacity = 1;
+        if (scrollTop > fadeStart) {
+            opacity = Math.max(0, 1 - (scrollTop - fadeStart) / (fadeEnd - fadeStart));
+        }
+        
+        if (darkModeToggle) {
+            darkModeToggle.style.opacity = opacity;
+            darkModeToggle.style.pointerEvents = opacity > 0.1 ? 'auto' : 'none';
+        }
+        if (languageToggle) {
+            languageToggle.style.opacity = opacity;
+            languageToggle.style.pointerEvents = opacity > 0.1 ? 'auto' : 'none';
+        }
+        
+        ticking = false;
+    }
+    
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(updateToggleOpacity);
+            ticking = true;
+        }
+    }
+    
+    // Add scroll event listener
+    window.addEventListener('scroll', requestTick);
+    
+    // Initial call to set correct opacity on page load
+    updateToggleOpacity();
+}
 
 /** Contact functionality **/
 function handleContactClick(type, value) {
