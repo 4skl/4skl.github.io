@@ -8,6 +8,45 @@
     --color-secondary: #aaa;
     --font-color: #000;
     --font-color-secondary: #222;
+    
+    /* Text colors */
+    --text-light: #fff;
+    --text-white: #fff;
+    --text-light-gray: #e0e0e0;
+    --text-dark: #222;
+    
+    /* Accent colors */
+    --accent-green: #4CAF50;
+    --accent-black: #000;
+    
+    /* Gradient colors - Light theme */
+    --gradient-light-start: #196dfd;
+    --gradient-light-end: #026383;
+    --gradient-default-start: #667eea;
+    --gradient-default-end: #764ba2;
+    
+    /* Transparent overlay colors - Light theme */
+    --overlay-light-10: rgba(255,255,255,0.1);
+    --overlay-light-15: rgba(255,255,255,0.15);
+    --overlay-light-20: rgba(255,255,255,0.2);
+    --overlay-light-25: rgba(255,255,255,0.25);
+    --overlay-light-30: rgba(255,255,255,0.3);
+    --overlay-light-40: rgba(255,255,255,0.4);
+    --overlay-light-50: rgba(255,255,255,0.5);
+    --overlay-light-80: rgba(255,255,255,0.8);
+    --overlay-light-90: rgba(255,255,255,0.9);
+    --overlay-light-95: rgba(255,255,255,0.95);
+    
+    /* Shadow colors */
+    --shadow-dark-10: rgba(0,0,0,0.10);
+    --shadow-dark-18: rgba(0,0,0,0.18);
+    --shadow-dark-20: rgba(0,0,0,0.2);
+    --shadow-dark-30: rgba(0,0,0,0.3);
+    --shadow-white: rgba(255,255,255,1);
+    
+    /* Specific UI colors */
+    --toggle-bg: #000;
+    --white-glow: 0px 0px 10px #fff;
 }
 
 .dark-theme {
@@ -16,6 +55,15 @@
     --color-secondary: #666;
     --font-color: #fff;
     --font-color-secondary: #aaa;
+    
+    /* Gradient colors - Dark theme */
+    --gradient-light-start: #2c3e50;
+    --gradient-light-end: #34495e;
+    --gradient-default-start: #2c3e50;
+    --gradient-default-end: #34495e;
+    
+    /* Dark theme specific overlay */
+    --overlay-dark-80: rgba(0, 0, 0, 0.8);
 }
 
 * {
@@ -27,68 +75,68 @@
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     line-height: 1.6;
-    color: #333;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: var(--text-light);
+    background: linear-gradient(135deg, var(--gradient-default-start) 0%, var(--gradient-default-end) 100%);
     min-height: 100vh;
     transition: background 0.3s ease, color 0.3s ease;
 }
 
 .dark-theme body {
-    color: #e0e0e0;
-    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    color: var(--text-light-gray);
+    background: linear-gradient(135deg, var(--gradient-light-start) 0%, var(--gradient-light-end) 100%);
 }
 
 /* Light theme specific styles */
 html:not(.dark-theme) body {
-    color: #333;
-    background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+    color: var(--text-light);
+    background: linear-gradient(135deg, var(--gradient-light-start) 0%, var(--gradient-light-end) 100%);
 }
 
 html:not(.dark-theme) .card {
-    background: rgba(255,255,255,0.2);
-    border: 1px solid rgba(255,255,255,0.3);
+    background: var(--overlay-light-20);
+    border: 1px solid var(--overlay-light-30);
 }
 
 html:not(.dark-theme) .card h2 {
-    color: #fff;
+    color: var(--text-white);
 }
 
 html:not(.dark-theme) .card p {
-    color: rgba(255,255,255,0.9);
+    color: var(--overlay-light-90);
 }
 
 html:not(.dark-theme) .services-list li {
-    color: rgba(255,255,255,0.95);
+    color: var(--overlay-light-95);
 }
 
 html:not(.dark-theme) .contact-item {
-    background: rgba(255,255,255,0.15);
+    background: var(--overlay-light-15);
 }
 
 html:not(.dark-theme) .contact-item:hover {
-    background: rgba(255,255,255,0.25);
+    background: var(--overlay-light-25);
 }
 
 html:not(.dark-theme) .project-card {
-    background: rgba(255,255,255,0.15);
+    background: var(--overlay-light-15);
 }
 
 html:not(.dark-theme) .blog-card {
-    background: rgba(255,255,255,0.2);
-    border: 2px solid rgba(255,255,255,0.3);
+    background: var(--overlay-light-20);
+    border: 2px solid var(--overlay-light-30);
 }
 
 html:not(.dark-theme) .blog-card:hover {
-    border-color: rgba(255,255,255,0.5);
+    border-color: var(--overlay-light-50);
 }
 
 html:not(.dark-theme) .social-link {
-    background: rgba(255,255,255,0.15);
-    border: 1px solid rgba(255,255,255,0.3);
+    background: var(--overlay-light-15);
+    border: 1px solid var(--overlay-light-30);
 }
 
 html:not(.dark-theme) .social-link:hover {
-    background: rgba(255,255,255,0.25);
+    background: var(--overlay-light-25);
 }
 
 .container {
@@ -105,14 +153,14 @@ header {
 .logo {
     font-size: 3rem;
     font-weight: bold;
-    color: #fff;
+    color: var(--text-white);
     margin-bottom: 0.5rem;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    text-shadow: 2px 2px 4px var(--shadow-dark-30);
 }
 
 .tagline {
     font-size: 1.2rem;
-    color: rgba(255,255,255,0.9);
+    color: var(--overlay-light-90);
     margin-bottom: 2rem;
 }
 
@@ -128,11 +176,11 @@ header {
 }
 
 .card {
-    background: rgba(255,255,255,0.1);
+    background: var(--overlay-light-10);
     backdrop-filter: blur(10px);
     border-radius: 15px;
     padding: 2rem;
-    border: 1px solid rgba(255,255,255,0.2);
+    border: 1px solid var(--overlay-light-20);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -140,17 +188,17 @@ header {
 
 .card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    box-shadow: 0 15px 35px var(--shadow-dark-20);
 }
 
 .card h2 {
-    color: #fff;
+    color: var(--text-white);
     margin-bottom: 1rem;
     font-size: 1.5rem;
 }
 
 .card p {
-    color: rgba(255,255,255,0.8);
+    color: var(--overlay-light-80);
     margin-bottom: 1rem;
 }
 .card.contact-card {
@@ -164,7 +212,7 @@ header {
 }
 
 .services-list li {
-    color: rgba(255,255,255,0.9);
+    color: var(--overlay-light-90);
     margin: 0.5rem 0;
     padding-left: 1.5rem;
     position: relative;
@@ -174,7 +222,7 @@ header {
     content: "✓";
     position: absolute;
     left: 0;
-    color: #4CAF50;
+    color: var(--accent-green);
     font-weight: bold;
 }
 
@@ -186,7 +234,7 @@ header {
 }
 
 .contact-item {
-    background: rgba(255,255,255,0.1);
+    background: var(--overlay-light-10);
     padding: 1rem;
     border-radius: 10px;
     text-align: center;
@@ -194,13 +242,13 @@ header {
 }
 
 .contact-item:hover {
-    background: rgba(255,255,255,0.2);
+    background: var(--overlay-light-20);
     transform: scale(1.08);
-    box-shadow: 0 8px 24px 0 rgba(0,0,0,0.18), 0 1.5px 6px 0 rgba(0,0,0,0.10);
+    box-shadow: 0 8px 24px 0 var(--shadow-dark-18), 0 1.5px 6px 0 var(--shadow-dark-10);
 }
 
 .contact-item a {
-    color: #fff;
+    color: var(--text-white);
     text-decoration: none;
     font-weight: 500;
 }
@@ -216,45 +264,6 @@ header {
     margin-top: 1rem;
 }
 
-.project-card {
-    background: rgba(255,255,255,0.1);
-    padding: 1.5rem;
-    border-radius: 10px;
-    transition: transform 0.3s ease;
-}
-
-.project-card:hover {
-    transform: translateY(-3px);
-}
-
-.project-card h3 {
-    color: #fff;
-    margin-bottom: 0.5rem;
-}
-
-.project-card p {
-    color: rgba(255,255,255,0.8);
-    font-size: 0.9rem;
-}
-
-.project-status {
-    display: inline-block;
-    background: #4CAF50;
-    color: white;
-    padding: 0.2rem 0.8rem;
-    border-radius: 15px;
-    font-size: 0.8rem;
-    margin-top: 0.5rem;
-}
-
-.project-status.beta {
-    background: #FF9800;
-}
-
-.project-status.prototype {
-    background: #2196F3;
-}
-
 .blog-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -263,7 +272,7 @@ header {
 }
 
 .blog-description h3 {
-    color: #fff;
+    color: var(--text-white);
     margin-bottom: 1rem;
     font-size: 1.2rem;
 }
@@ -281,12 +290,12 @@ header {
 }
 
 .blog-card {
-    background: rgba(255,255,255,0.15);
+    background: var(--overlay-light-15);
     padding: 2rem;
     border-radius: 15px;
     text-align: center;
     transition: all 0.3s ease;
-    border: 2px solid rgba(255,255,255,0.2);
+    border: 2px solid var(--overlay-light-20);
     position: relative;
     overflow: hidden;
 }
@@ -298,7 +307,7 @@ header {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    background: linear-gradient(90deg, transparent, var(--overlay-light-10), transparent);
     transition: left 0.5s;
 }
 
@@ -308,18 +317,18 @@ header {
 
 .blog-card:hover {
     transform: translateY(-5px) scale(1.05);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-    border-color: rgba(255,255,255,0.4);
+    box-shadow: 0 20px 40px var(--shadow-dark-30);
+    border-color: var(--overlay-light-40);
 }
 
 .blog-card h3 {
-    color: #fff;
+    color: var(--text-white);
     margin-bottom: 1rem;
     font-size: 1.3rem;
 }
 
 .blog-card p {
-    color: rgba(255,255,255,0.8);
+    color: var(--overlay-light-80);
     margin-bottom: 1.5rem;
     line-height: 1.5;
 }
@@ -327,7 +336,7 @@ header {
 .blog-arrow {
     display: inline-block;
     font-size: 1.5rem;
-    color: #4CAF50;
+    color: var(--accent-green);
     transition: transform 0.3s ease;
 }
 
@@ -344,17 +353,17 @@ header {
 }
 
 .social-link {
-    background: rgba(255,255,255,0.1);
+    background: var(--overlay-light-10);
     color: white;
     padding: 0.8rem 1.5rem;
     border-radius: 25px;
     text-decoration: none;
     transition: all 0.3s ease;
-    border: 1px solid rgba(255,255,255,0.2);
+    border: 1px solid var(--overlay-light-20);
 }
 
 .social-link:hover {
-    background: rgba(255,255,255,0.2);
+    background: var(--overlay-light-20);
     transform: scale(1.05);
 }
 
@@ -372,7 +381,7 @@ header {
 
 .darkmode-toggle:hover {
     transform: scale(1.12);
-    box-shadow: 0 8px 24px 0 rgba(0,0,0,0.18), 0 1.5px 6px 0 rgba(0,0,0,0.10);
+    box-shadow: 0 8px 24px 0 var(--shadow-dark-18), 0 1.5px 6px 0 var(--shadow-dark-10);
 }
 
 .language-toggle {
@@ -385,7 +394,7 @@ header {
 
 .language-toggle button {
     background: transparent;
-    color: #222;
+    color: var(--text-dark);
     border-radius: 25px;
     padding: 0em 0.5em;
     cursor: pointer;
@@ -398,14 +407,14 @@ header {
 }
 
 .dark-theme .language-toggle button {
-    background: rgba(0, 0, 0, 0.8);
-    color: #fff;
+    background: var(--overlay-dark-80);
+    color: var(--text-white);
 }
 
 .language-toggle button:hover {
-    background: rgba(255, 255, 255, 0.3);
+    background: var(--overlay-light-30);
     transform: scale(1.12);
-    box-shadow: 0 8px 24px 0 rgba(0,0,0,0.18), 0 1.5px 6px 0 rgba(0,0,0,0.10);
+    box-shadow: 0 8px 24px 0 var(--shadow-dark-18), 0 1.5px 6px 0 var(--shadow-dark-10);
 }
 
 .darkmode-toggle > input[type="checkbox"] {
@@ -430,7 +439,7 @@ header {
     left: 0px;
     overflow: hidden;
     opacity: 1;
-    background-color: #000;
+    background-color: var(--toggle-bg);
     border-radius: 40px;
     transition: 0.2s ease background-color, 0.2s ease opacity;
 }
@@ -453,14 +462,14 @@ header {
 }
 
 .darkmode-toggle > span:after {
-    background-color: #fff;
+    background-color: var(--text-white);
     transform: translate(5px, 0px);
-    box-shadow: 0px 0px 10px #fff;
+    box-shadow: var(--white-glow);
     z-index: 0;
 }
 
 .darkmode-toggle > input[type="checkbox"]:checked + span {
-    background-color: #000;
+    background-color: var(--toggle-bg);
 }
 
 .darkmode-toggle > input[type="checkbox"]:active + span {
@@ -470,7 +479,7 @@ header {
 .darkmode-toggle > input[type="checkbox"]:checked + span:before {
     background-color: var(--background-color);
     transform: translate(-7px, 0px);
-    box-shadow: 0px 0px 10px var(--background-color);
+    box-shadow: var(--white-glow);
 }
 
 @media (max-width: 768px) {
