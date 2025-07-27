@@ -82,7 +82,7 @@ function setLanguage(lang) {
     // Update button text with flags
     const langButton = document.getElementById('lang-button-text');
     if (langButton) {
-        langButton.textContent = lang === 'en' ? '🇫🇷' : '🇺🇸';
+        langButton.textContent = lang === 'en' ? '🇫🇷' : '🇬🇧';
     }
     
     // Update all elements with data attributes
