@@ -13,10 +13,10 @@
     --text-dark: #1a1a1a;
     
     /* Gradient colors */
-    --gradient-light-start: #196dfd;
-    --gradient-light-end: #026383;
-    --gradient-default-start: #667eea;
-    --gradient-default-end: #764ba2;
+    --gradient-light-start: #1a4db8;
+    --gradient-light-end: #024569;
+    --gradient-default-start: #4a5db8;
+    --gradient-default-end: #5a3d82;
     
     /* Overlay colors */
     --overlay-light-10: rgba(255,255,255,0.1);
@@ -65,6 +65,7 @@
     --focus-shadow: 0 0 0 3px rgba(96, 165, 250, 0.5);
     
     --overlay-dark-80: rgba(0, 0, 0, 0.8);
+    --toggle-bg: #fff;
 }
 
 /* Layout */
@@ -139,7 +140,7 @@ body {
 
 .dark-theme body {
     color: var(--text-light-gray);
-    background: linear-gradient(135deg, var(--gradient-light-start) 0%, var(--gradient-light-end) 100%);
+    background: linear-gradient(135deg, var(--gradient-default-start) 0%, var(--gradient-default-end) 100%);
 }
 
 /* Light theme specific styles */

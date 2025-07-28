@@ -25,6 +25,12 @@ function initializeDarkMode() {
         if (toggleButton) toggleButton.checked = false;
     }
     
+    // Update ARIA state for the toggle container
+    const toggleContainer = document.querySelector('#darkmode-toggle-button');
+    if (toggleContainer) {
+        toggleContainer.setAttribute('aria-checked', isDarkMode);
+    }
+    
     // Listen for toggle changes
     if (toggleButton) {
         toggleButton.addEventListener('change', function() {
@@ -60,12 +66,19 @@ function initializeDarkMode() {
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
         if (!localStorage.getItem('theme')) {
             // Only update if user hasn't made a manual choice
-            if (e.matches) {
+            const isDark = e.matches;
+            if (isDark) {
                 html.classList.add('dark-theme');
                 if (toggleButton) toggleButton.checked = true;
             } else {
                 html.classList.remove('dark-theme');
                 if (toggleButton) toggleButton.checked = false;
+            }
+            
+            // Update ARIA state
+            const toggleContainer = document.querySelector('#darkmode-toggle-button');
+            if (toggleContainer) {
+                toggleContainer.setAttribute('aria-checked', isDark);
             }
         }
     });
