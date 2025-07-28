@@ -592,8 +592,8 @@ header {
 }
 
 .dark-theme .darkmode-toggle::after {
-    background: var(--overlay-light-90);
-    color: var(--text-dark);
+    background: var(--overlay-dark-80);
+    color: var(--text-white);
 }
 
 @media (max-width: 768px) {
