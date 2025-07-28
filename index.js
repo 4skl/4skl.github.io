@@ -1,7 +1,10 @@
 /** Dark mode functionality with system preference detection **/
 function initializeDarkMode() {
     const toggleButton = document.querySelector('#dark-mode-checkbox');
+    const toggleContainer = document.querySelector('#darkmode-toggle-button');
     const html = document.documentElement;
+    
+    console.log('Initializing dark mode...', { toggleButton, toggleContainer });
     
     // Check for saved user preference, otherwise use system preference
     const savedTheme = localStorage.getItem('theme');
@@ -16,6 +19,8 @@ function initializeDarkMode() {
         isDarkMode = systemPrefersDark;
     }
     
+    console.log('Initial theme state:', { savedTheme, systemPrefersDark, isDarkMode });
+    
     // Apply the theme
     if (isDarkMode) {
         html.classList.add('dark-theme');
@@ -26,7 +31,6 @@ function initializeDarkMode() {
     }
     
     // Update ARIA state for the toggle container
-    const toggleContainer = document.querySelector('#darkmode-toggle-button');
     if (toggleContainer) {
         toggleContainer.setAttribute('aria-checked', isDarkMode.toString());
     }
@@ -34,32 +38,50 @@ function initializeDarkMode() {
     // Listen for toggle changes
     if (toggleButton) {
         toggleButton.addEventListener('change', function() {
-            const isDark = this.checked;
-            if (isDark) {
-                html.classList.add('dark-theme');
-                localStorage.setItem('theme', 'dark');
-            } else {
-                html.classList.remove('dark-theme');
-                localStorage.setItem('theme', 'light');
+            try {
+                const isDark = this.checked;
+                console.log('Dark mode toggle clicked, isDark:', isDark);
+                
+                if (isDark) {
+                    html.classList.add('dark-theme');
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    html.classList.remove('dark-theme');
+                    localStorage.setItem('theme', 'light');
+                }
+                
+                // Update ARIA state
+                if (toggleContainer) {
+                    toggleContainer.setAttribute('aria-checked', isDark.toString());
+                }
+            } catch (error) {
+                console.error('Error in dark mode toggle:', error);
             }
-            
-            // Update ARIA state
-            const toggleContainer = document.querySelector('#darkmode-toggle-button');
-            if (toggleContainer) {
-                toggleContainer.setAttribute('aria-checked', isDark.toString());
+        });
+    }
+    
+    // Add click support for the toggle container (in case checkbox doesn't get the click)
+    if (toggleContainer) {
+        toggleContainer.addEventListener('click', function(e) {
+            // Only handle clicks if they didn't come from the checkbox itself
+            if (e.target !== toggleButton) {
+                console.log('Container clicked, triggering checkbox');
+                if (toggleButton) {
+                    toggleButton.click();
+                }
             }
         });
         
         // Add keyboard support for the toggle container
-        const toggleContainer = document.querySelector('#darkmode-toggle-button');
-        if (toggleContainer) {
-            toggleContainer.addEventListener('keydown', function(e) {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
+        toggleContainer.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                console.log('Keyboard event on container, triggering checkbox');
+                if (toggleButton) {
                     toggleButton.click();
                 }
-            });
-        }
+            }
+        });
     }
     
     // Listen for system theme changes (only if user hasn't set preference)
@@ -67,6 +89,8 @@ function initializeDarkMode() {
         if (!localStorage.getItem('theme')) {
             // Only update if user hasn't made a manual choice
             const isDark = e.matches;
+            console.log('System theme changed:', isDark);
+            
             if (isDark) {
                 html.classList.add('dark-theme');
                 if (toggleButton) toggleButton.checked = true;
@@ -76,7 +100,6 @@ function initializeDarkMode() {
             }
             
             // Update ARIA state
-            const toggleContainer = document.querySelector('#darkmode-toggle-button');
             if (toggleContainer) {
                 toggleContainer.setAttribute('aria-checked', isDark.toString());
             }
@@ -103,10 +126,15 @@ function initializeLanguage() {
 }
 
 function toggleLanguage() {
-    const currentLang = localStorage.getItem('language') || 'en';
-    const newLang = currentLang === 'en' ? 'fr' : 'en';
-    setLanguage(newLang);
-    localStorage.setItem('language', newLang);
+    try {
+        const currentLang = localStorage.getItem('language') || 'en';
+        const newLang = currentLang === 'en' ? 'fr' : 'en';
+        setLanguage(newLang);
+        localStorage.setItem('language', newLang);
+        console.log('Language switched to:', newLang);
+    } catch (error) {
+        console.error('Error toggling language:', error);
+    }
 }
 
 function setLanguage(lang) {
@@ -117,6 +145,12 @@ function setLanguage(lang) {
     const toggleContainer = document.querySelector('#darkmode-toggle-button');
     if (toggleContainer) {
         toggleContainer.setAttribute('aria-checked', document.documentElement.classList.contains('dark-theme').toString());
+    }
+    
+    // Update ARIA state for language toggle
+    const langButton = document.querySelector('#language-toggle-button button');
+    if (langButton) {
+        langButton.setAttribute('aria-pressed', 'false'); // Reset to false, it's not a toggle that stays pressed
     }
     
     // Update flag SVG and button text
@@ -142,20 +176,12 @@ function setLanguage(lang) {
     if (flagIcon) {
         if (lang === 'en') {
             // Show French flag when in English (click to switch to French)
-            flagIcon.innerHTML = `
-                <rect width="8" height="16" fill="#002395"/>
-                <rect x="8" width="8" height="16" fill="#FFFFFF"/>
-                <rect x="16" width="8" height="16" fill="#ED2939"/>
-            `;
+            flagIcon.src = 'flag-fr.svg';
+            flagIcon.alt = 'French flag - Click to switch to French';
         } else {
             // Show British flag when in French (click to switch to English)
-            flagIcon.innerHTML = `
-                <rect width="24" height="16" fill="#012169"/>
-                <path d="M0 0l24 16M24 0L0 16" stroke="#FFFFFF" stroke-width="3"/>
-                <path d="M0 0l24 16M24 0L0 16" stroke="#C8102E" stroke-width="2"/>
-                <path d="M12 0v16M0 8h24" stroke="#FFFFFF" stroke-width="5"/>
-                <path d="M12 0v16M0 8h24" stroke="#C8102E" stroke-width="3"/>
-            `;
+            flagIcon.src = 'flag-en.svg';
+            flagIcon.alt = 'British flag - Click to switch to English';
         }
     }
     
@@ -208,13 +234,18 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize toggle fade on scroll
     initializeToggleFade();
+    
+    // Make functions globally available
+    window.toggleLanguage = toggleLanguage;
+    window.handleContactClick = handleContactClick;
+    
+    console.log('4skl website initialized successfully');
 });
 
-/** Toggle fade on scroll functionality **/
+/** Toggle fade on scroll functionality - simplified for better performance **/
 function initializeToggleFade() {
     const darkModeToggle = document.querySelector('.darkmode-toggle');
     const languageToggle = document.querySelector('.language-toggle');
-    let ticking = false;
     
     function updateToggleOpacity() {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
@@ -234,19 +265,10 @@ function initializeToggleFade() {
             languageToggle.style.opacity = opacity;
             languageToggle.style.pointerEvents = opacity > 0.1 ? 'auto' : 'none';
         }
-        
-        ticking = false;
     }
     
-    function requestTick() {
-        if (!ticking) {
-            requestAnimationFrame(updateToggleOpacity);
-            ticking = true;
-        }
-    }
-    
-    // Add scroll event listener
-    window.addEventListener('scroll', requestTick);
+    // Add scroll event listener with passive option for better performance
+    window.addEventListener('scroll', updateToggleOpacity, { passive: true });
     
     // Initial call to set correct opacity on page load
     updateToggleOpacity();
@@ -271,17 +293,4 @@ function handleContactClick(type, value) {
             });
         }
     }
-}
-
-/** Performance optimization: Debounced scroll handler **/
-function debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-    };
 }

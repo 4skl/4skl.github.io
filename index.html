@@ -29,6 +29,10 @@
     <!-- Bunny Fonts: Cloudflare's privacy-focused Google Fonts mirror, now using Acme -->
     <link href="https://fonts.bunny.net/css?family=acme:400" rel="stylesheet">
 
+    <!-- Preload flag images for faster language toggle -->
+    <link rel="preload" href="flag-fr.svg" as="image" type="image/svg+xml">
+    <link rel="preload" href="flag-en.svg" as="image" type="image/svg+xml">
+
     <link rel="stylesheet" href="index.css">
     
     <script src="index.js" defer></script>
@@ -86,21 +90,12 @@
                     aria-labelledby="lang-button-label"
                     aria-describedby="lang-button-description"
                     aria-pressed="false">
-                <svg id="lang-flag-icon" 
+                <img id="lang-flag-icon" 
+                     src="flag-fr.svg" 
                      width="24" 
                      height="16" 
-                     viewBox="0 0 24 16" 
-                     fill="none" 
-                     xmlns="http://www.w3.org/2000/svg" 
-                     aria-hidden="true"
-                     role="img"
-                     aria-labelledby="flag-title">
-                    <title id="flag-title">Language flag</title>
-                    <!-- French flag (default) -->
-                    <rect width="8" height="16" fill="#002395"/>
-                    <rect x="8" width="8" height="16" fill="#FFFFFF"/>
-                    <rect x="16" width="8" height="16" fill="#ED2939"/>
-                </svg>
+                     alt="Language flag"
+                     aria-hidden="true">
                 <span id="lang-button-label" class="sr-only" data-en="Switch to French" data-fr="Switch to English">Switch to French</span>
                 <span id="lang-button-description" class="sr-only" data-en="Change website language" data-fr="Changer la langue du site">Change website language</span>
             </button>
