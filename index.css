@@ -1,27 +1,24 @@
-/* Custom styles for the 4skl landing page */
-@import url('https://fonts.googleapis.com/css2?family=Dosis&display=swap');
+/* 4skl.com - Modern Landing Page Styles */
 
-/* CSS Variables for theming */
 :root {
     --background-color: #fff;
     --color-primary: #ccc;
     --color-secondary: #aaa;
     --font-color: #000;
-    --font-color-secondary: #222;
+    --font-color-secondary: #333;
     
-    /* Text colors */
     --text-light: #fff;
     --text-white: #fff;
-    --text-light-gray: #e0e0e0;
-    --text-dark: #222;
+    --text-light-gray: #f0f0f0;
+    --text-dark: #1a1a1a;
     
-    /* Gradient colors - Light theme */
+    /* Gradient colors */
     --gradient-light-start: #196dfd;
     --gradient-light-end: #026383;
     --gradient-default-start: #667eea;
     --gradient-default-end: #764ba2;
     
-    /* Transparent overlay colors - Light theme */
+    /* Overlay colors */
     --overlay-light-10: rgba(255,255,255,0.1);
     --overlay-light-15: rgba(255,255,255,0.15);
     --overlay-light-20: rgba(255,255,255,0.2);
@@ -33,14 +30,17 @@
     --overlay-light-90: rgba(255,255,255,0.9);
     --overlay-light-95: rgba(255,255,255,0.95);
     
-    /* Shadow colors */
+    /* Shadows */
     --shadow-dark-10: rgba(0,0,0,0.10);
     --shadow-dark-18: rgba(0,0,0,0.18);
     --shadow-dark-20: rgba(0,0,0,0.2);
     --shadow-dark-30: rgba(0,0,0,0.3);
     --shadow-white: rgba(255,255,255,1);
     
-    /* Specific UI colors */
+    /* Focus and interaction */
+    --focus-color: #4a90e2;
+    --focus-shadow: 0 0 0 3px rgba(74, 144, 226, 0.5);
+    
     --toggle-bg: #000;
     --white-glow: 0px 0px 10px #fff;
 }
@@ -50,31 +50,91 @@
     --color-primary: #444;
     --color-secondary: #666;
     --font-color: #fff;
-    --font-color-secondary: #aaa;
+    --font-color-secondary: #e0e0e0;
     
-    /* Gradient colors - Dark theme */
+    --text-white: #fff;
+    --text-light-gray: #b0b0b0;
+    --text-dark: #f5f5f5;
+    
     --gradient-light-start: #2c3e50;
     --gradient-light-end: #34495e;
     --gradient-default-start: #2c3e50;
     --gradient-default-end: #34495e;
     
-    /* Dark theme specific overlay */
+    --focus-color: #60a5fa;
+    --focus-shadow: 0 0 0 3px rgba(96, 165, 250, 0.5);
+    
     --overlay-dark-80: rgba(0, 0, 0, 0.8);
 }
 
+/* Layout */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+.site-controls {
+    position: relative;
+    z-index: 1000;
+}
+
+.description {
+    color: var(--text-light-gray);
+    font-size: 1rem;
+}
+
+.service-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+/* Accessibility */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+*:focus-visible {
+    outline: 2px solid var(--focus-color);
+    outline-offset: 2px;
+    box-shadow: var(--focus-shadow);
+}
+
+*:focus {
+    outline: none;
+}
+
+button:focus-visible,
+[role="button"]:focus-visible,
+[role="switch"]:focus-visible,
+a:focus-visible {
+    outline: 2px solid var(--focus-color);
+    outline-offset: 2px;
+    box-shadow: var(--focus-shadow);
+}
+
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: 'Acme', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     line-height: 1.6;
     color: var(--text-light);
     background: linear-gradient(135deg, var(--gradient-default-start) 0%, var(--gradient-default-end) 100%);
     min-height: 100vh;
     transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Site navigation controls */
+.site-controls {
+    position: relative;
+    z-index: 1000;
 }
 
 .dark-theme body {
@@ -449,7 +509,7 @@ header {
     z-index: 2;
 }
 
-.darkmode-toggle > span {
+.darkmode-toggle > span.toggle-slider {
     position: absolute;
     top: 0px;
     right: 0px;
@@ -460,10 +520,11 @@ header {
     background-color: var(--toggle-bg);
     border-radius: 40px;
     transition: 0.2s ease background-color, 0.2s ease opacity;
+    cursor: pointer;
 }
 
-.darkmode-toggle > span:before,
-.darkmode-toggle > span:after {
+.darkmode-toggle > span.toggle-slider:before,
+.darkmode-toggle > span.toggle-slider:after {
     content: '';
     position: absolute;
     top: 5px;
@@ -473,28 +534,28 @@ header {
     transition: 0.2s ease transform, 0.2s ease background-color;
 }
 
-.darkmode-toggle > span:before {
+.darkmode-toggle > span.toggle-slider:before {
     background-color: var(--background-color);
     transform: translate(-100px, 0px);
     z-index: 1;
 }
 
-.darkmode-toggle > span:after {
+.darkmode-toggle > span.toggle-slider:after {
     background-color: var(--text-white);
     transform: translate(5px, 0px);
     box-shadow: var(--white-glow);
     z-index: 0;
 }
 
-.darkmode-toggle > input[type="checkbox"]:checked + span {
+.darkmode-toggle > input[type="checkbox"]:checked + span.toggle-slider {
     background-color: var(--toggle-bg);
 }
 
-.darkmode-toggle > input[type="checkbox"]:active + span {
+.darkmode-toggle > input[type="checkbox"]:active + span.toggle-slider {
     opacity: 0.5;
 }
 
-.darkmode-toggle > input[type="checkbox"]:checked + span:before {
+.darkmode-toggle > input[type="checkbox"]:checked + span.toggle-slider:before {
     background-color: var(--background-color);
     transform: translate(-7px, 0px);
     box-shadow: var(--white-glow);

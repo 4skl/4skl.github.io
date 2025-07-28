@@ -5,52 +5,134 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>4skl - Freelance Developer & IT Solutions</title>
     <meta name="description" content="Professional freelance developer and IT troubleshooting services. Specializing in web development, software solutions, and technical support.">
+    <meta name="keywords" content="freelance developer, web development, IT solutions, software development, technical support">
+    <meta name="author" content="4skl">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Accessibility and UX meta tags -->
+    <meta name="theme-color" content="#196dfd">
+    <meta name="color-scheme" content="light dark">
+    
+    <!-- Open Graph tags for social media -->
+    <meta property="og:title" content="4skl - Freelance Developer & IT Solutions">
+    <meta property="og:description" content="Professional freelance developer and IT troubleshooting services. Specializing in web development, software solutions, and technical support.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://4skl.com">
+    <meta property="og:image" content="https://4skl.com/favicon.svg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="shortcut icon" type="image/svg+xml" href="favicon.svg">
+    
+    <!-- Preconnect to Bunny Fonts (Cloudflare-powered Google Fonts mirror) -->
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <!-- Bunny Fonts: Cloudflare's privacy-focused Google Fonts mirror, now using Acme -->
+    <link href="https://fonts.bunny.net/css?family=acme:400" rel="stylesheet">
 
-    <!-- CSS file -->
     <link rel="stylesheet" href="index.css">
     
-    <!-- JavaScript file -->
-    <script src="index.js"></script>
+    <script src="index.js" defer></script>
+    
+    <!-- JSON-LD structured data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "4skl",
+        "jobTitle": "Freelance Developer",
+        "description": "Professional freelance developer and IT troubleshooting services",
+        "url": "https://4skl.com",
+        "sameAs": [
+            "https://github.com/4skl"
+        ],
+        "knowsAbout": [
+            "Web Development",
+            "Software Development",
+            "IT Solutions",
+            "Technical Support"
+        ],
+        "offers": {
+            "@type": "Service",
+            "name": "Freelance Development Services",
+            "description": "Web development, software solutions, and technical support services"
+        }
+    }
+    </script>
 </head>
 <body>
-    <!-- Dark mode toggle -->
-    <div class="darkmode-toggle" id="darkmode-toggle-button" 
-         data-en="Toggle dark/light mode" 
-         data-fr="Basculer mode sombre/clair">
-        <input type="checkbox" id="dark-mode-checkbox" aria-label="Toggle dark mode">
-        <span></span>
-    </div>
+    <nav aria-label="Site controls" class="site-controls">
+        <!-- Dark mode toggle with proper accessibility -->
+        <div class="darkmode-toggle" 
+             id="darkmode-toggle-button" 
+             role="switch"
+             aria-checked="false"
+             aria-labelledby="dark-mode-label"
+             tabindex="0"
+             data-en="Toggle dark/light mode" 
+             data-fr="Basculer mode sombre/clair">
+            <input type="checkbox" 
+                   id="dark-mode-checkbox" 
+                   class="sr-only" 
+                   aria-describedby="dark-mode-description">
+            <span class="toggle-slider" aria-hidden="true"></span>
+            <span id="dark-mode-label" class="sr-only" data-en="Dark mode toggle" data-fr="Basculer mode sombre">Dark mode toggle</span>
+            <span id="dark-mode-description" class="sr-only" data-en="Press Enter or Space to toggle between light and dark theme" data-fr="Appuyez sur Entrée ou Espace pour basculer entre le thème clair et sombre">Press Enter or Space to toggle between light and dark theme</span>
+        </div>
 
-    <!-- Language toggle -->
-    <div class="language-toggle" id="language-toggle-button">
-        <button onclick="toggleLanguage()">
-            <span id="lang-button-text">🇫🇷</span>
-        </button>
-    </div>
+        <!-- Language toggle with enhanced accessibility -->
+        <div class="language-toggle" id="language-toggle-button">
+            <button type="button" 
+                    onclick="toggleLanguage()" 
+                    aria-labelledby="lang-button-label"
+                    aria-describedby="lang-button-description"
+                    aria-pressed="false">
+                <svg id="lang-flag-icon" 
+                     width="24" 
+                     height="16" 
+                     viewBox="0 0 24 16" 
+                     fill="none" 
+                     xmlns="http://www.w3.org/2000/svg" 
+                     aria-hidden="true"
+                     role="img"
+                     aria-labelledby="flag-title">
+                    <title id="flag-title">Language flag</title>
+                    <!-- French flag (default) -->
+                    <rect width="8" height="16" fill="#002395"/>
+                    <rect x="8" width="8" height="16" fill="#FFFFFF"/>
+                    <rect x="16" width="8" height="16" fill="#ED2939"/>
+                </svg>
+                <span id="lang-button-label" class="sr-only" data-en="Switch to French" data-fr="Switch to English">Switch to French</span>
+                <span id="lang-button-description" class="sr-only" data-en="Change website language" data-fr="Changer la langue du site">Change website language</span>
+            </button>
+        </div>
+    </nav>
     
-    <div class="container">
-        <header>
+    <main class="container">
+        <header role="banner">
             <h1 class="logo">4skl</h1>
             <p class="tagline" data-en="Freelance Developer & IT Solutions" data-fr="Développeur Freelance & Solutions Informatiques">Freelance Developer & IT Solutions</p>
-            <p style="color: rgba(255,255,255,0.8); font-size: 1rem;" data-en="Passionate French developer specializing in web development, software solutions, and technical troubleshooting" data-fr="Développeur français passionné spécialisé dans le développement web, les solutions logicielles et le dépannage technique">Passionate French developer specializing in web development, software solutions, and technical troubleshooting</p>
+            <p class="description" data-en="Passionate French developer specializing in web development, software solutions, and technical troubleshooting" data-fr="Développeur français passionné spécialisé dans le développement web, les solutions logicielles et le dépannage technique">Passionate French developer specializing in web development, software solutions, and technical troubleshooting</p>
         </header>
         
-        <main class="main-content">
+        <div class="main-content">
             <!-- Services Section -->
-            <a href="mailto:contact+dev@4skl.com" style="text-decoration: none; color: inherit;">
-                <section class="card">
-                    <h2 data-en="🚀 Development Services" data-fr="🚀 Services de Développement">🚀 Development Services</h2>
-                    <p data-en="Professional software development and web solutions tailored to your needs." data-fr="Développement logiciel professionnel et solutions web adaptées à vos besoins.">Professional software development and web solutions tailored to your needs.</p>
-                    <ul class="services-list">
-                        <li data-en="Web Development (Frontend & Backend)" data-fr="Développement Web (Frontend & Backend)">Web Development (Frontend & Backend)</li>
-                        <li data-en="Progressive Web Apps (PWA)" data-fr="Applications Web Progressives (PWA)">Progressive Web Apps (PWA)</li>
-                        <li data-en="Mobile Applications" data-fr="Applications Mobiles">Mobile Applications</li>
-                        <li data-en="Custom Software Solutions" data-fr="Solutions Logicielles Sur-Mesure">Custom Software Solutions</li>
-                        <li data-en="API Development & Integration" data-fr="Développement & Intégration d'API">API Development & Integration</li>
-                    </ul>
-                </section>
-            </a>
+            <section class="services-section" aria-labelledby="dev-services-heading">
+                <a href="mailto:contact+dev@4skl.com" 
+                   class="service-link" 
+                   aria-describedby="dev-services-description">
+                    <article class="card" role="article">
+                        <h2 id="dev-services-heading" data-en="🚀 Development Services" data-fr="🚀 Services de Développement">🚀 Development Services</h2>
+                        <p id="dev-services-description" data-en="Professional software development and web solutions tailored to your needs." data-fr="Développement logiciel professionnel et solutions web adaptées à vos besoins.">Professional software development and web solutions tailored to your needs.</p>
+                        <ul class="services-list" role="list">
+                            <li role="listitem" data-en="Web Development (Frontend & Backend)" data-fr="Développement Web (Frontend & Backend)">Web Development (Frontend & Backend)</li>
+                            <li role="listitem" data-en="Progressive Web Apps (PWA)" data-fr="Applications Web Progressives (PWA)">Progressive Web Apps (PWA)</li>
+                            <li role="listitem" data-en="Mobile Applications" data-fr="Applications Mobiles">Mobile Applications</li>
+                            <li role="listitem" data-en="Custom Software Solutions" data-fr="Solutions Logicielles Sur-Mesure">Custom Software Solutions</li>
+                            <li role="listitem" data-en="API Development & Integration" data-fr="Développement & Intégration d'API">API Development & Integration</li>
+                        </ul>
+                    </article>
+                </a>
+            </section>
             
             <!-- IT Support Section -->
             <a href="mailto:contact+troubleshoot@4skl.com" style="text-decoration: none; color: inherit;">
@@ -110,19 +192,27 @@
                     </div>
                 </div>
             </section>
-        </main>
+        </div>
         
         <!-- Social Links and External Resources -->
-        <footer>
-            <div class="social-links">
-                <a href="https://blog.4skl.com" class="social-link" target="_blank">📝 Blog</a>
-                <a href="https://github.com/4skl" class="social-link" target="_blank">💻 GitHub</a>
-                <a href="https://bsky.app/profile/4skl.com" class="social-link" target="_blank">🦋 Bluesky</a>
-                <a href="https://wakatime.com/@4skl" class="social-link" target="_blank">⏱️ WakaTime</a>
-            </div>
+        <footer role="contentinfo">
+            <nav aria-label="Social media links" class="social-links">
+                <a href="https://blog.4skl.com" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Visit my blog">
+                    <span aria-hidden="true">📝</span> <span>Blog</span>
+                </a>
+                <a href="https://github.com/4skl" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="View my GitHub profile">
+                    <span aria-hidden="true">💻</span> <span>GitHub</span>
+                </a>
+                <a href="https://bsky.app/profile/4skl.com" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Follow me on Bluesky">
+                    <span aria-hidden="true">🦋</span> <span>Bluesky</span>
+                </a>
+                <a href="https://wakatime.com/@4skl" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="View my coding time on WakaTime">
+                    <span aria-hidden="true">⏱️</span> <span>WakaTime</span>
+                </a>
+            </nav>
             <p class="footer-text" data-en="© 2025 4skl - All rights reserved." data-fr="© 2025 4skl - Tous droits réservés.">© 2025 4skl - All rights reserved.</p>
             <p class="footer-text" data-en="Made in 4 hours using Copilot cause it seems to be the trend right now ~" data-fr="Fait en 4 heures avec Copilot car c'est tendance en ce moment ~">Made in 4 hours using Copilot cause it seems to be the trend right now ~</p>
         </footer>
-    </div>
+    </main>
 </body>
 </html>

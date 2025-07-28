@@ -28,14 +28,32 @@ function initializeDarkMode() {
     // Listen for toggle changes
     if (toggleButton) {
         toggleButton.addEventListener('change', function() {
-            if (this.checked) {
+            const isDark = this.checked;
+            if (isDark) {
                 html.classList.add('dark-theme');
                 localStorage.setItem('theme', 'dark');
             } else {
                 html.classList.remove('dark-theme');
                 localStorage.setItem('theme', 'light');
             }
+            
+            // Update ARIA state
+            const toggleContainer = document.querySelector('#darkmode-toggle-button');
+            if (toggleContainer) {
+                toggleContainer.setAttribute('aria-checked', isDark);
+            }
         });
+        
+        // Add keyboard support for the toggle container
+        const toggleContainer = document.querySelector('#darkmode-toggle-button');
+        if (toggleContainer) {
+            toggleContainer.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    toggleButton.click();
+                }
+            });
+        }
     }
     
     // Listen for system theme changes (only if user hasn't set preference)
@@ -79,10 +97,53 @@ function toggleLanguage() {
 }
 
 function setLanguage(lang) {
-    // Update button text with flags
-    const langButton = document.getElementById('lang-button-text');
-    if (langButton) {
-        langButton.textContent = lang === 'en' ? '🇫🇷' : '🇬🇧';
+    // Update HTML lang attribute for accessibility
+    document.documentElement.setAttribute('lang', lang);
+    
+    // Update ARIA state for dark mode toggle
+    const toggleContainer = document.querySelector('#darkmode-toggle-button');
+    if (toggleContainer) {
+        toggleContainer.setAttribute('aria-checked', document.documentElement.classList.contains('dark-theme'));
+    }
+    
+    // Update flag SVG and button text
+    const langButtonLabel = document.getElementById('lang-button-label');
+    const langButtonDescription = document.getElementById('lang-button-description');
+    const flagIcon = document.getElementById('lang-flag-icon');
+    
+    if (langButtonLabel) {
+        const labelText = langButtonLabel.getAttribute('data-' + lang);
+        if (labelText) {
+            langButtonLabel.textContent = labelText;
+        }
+    }
+    
+    if (langButtonDescription) {
+        const descText = langButtonDescription.getAttribute('data-' + lang);
+        if (descText) {
+            langButtonDescription.textContent = descText;
+        }
+    }
+    
+    // Update flag SVG
+    if (flagIcon) {
+        if (lang === 'en') {
+            // Show French flag when in English (click to switch to French)
+            flagIcon.innerHTML = `
+                <rect width="8" height="16" fill="#002395"/>
+                <rect x="8" width="8" height="16" fill="#FFFFFF"/>
+                <rect x="16" width="8" height="16" fill="#ED2939"/>
+            `;
+        } else {
+            // Show British flag when in French (click to switch to English)
+            flagIcon.innerHTML = `
+                <rect width="24" height="16" fill="#012169"/>
+                <path d="M0 0l24 16M24 0L0 16" stroke="#FFFFFF" stroke-width="3"/>
+                <path d="M0 0l24 16M24 0L0 16" stroke="#C8102E" stroke-width="2"/>
+                <path d="M12 0v16M0 8h24" stroke="#FFFFFF" stroke-width="5"/>
+                <path d="M12 0v16M0 8h24" stroke="#C8102E" stroke-width="3"/>
+            `;
+        }
     }
     
     // Update all elements with data attributes
@@ -92,7 +153,7 @@ function setLanguage(lang) {
             // For the dark mode toggle, set the data-tooltip attribute for CSS
             if (element.classList.contains('darkmode-toggle')) {
                 element.setAttribute('data-tooltip', text);
-            } else {
+            } else if (!element.classList.contains('sr-only')) {
                 element.textContent = text;
             }
         }
@@ -178,11 +239,36 @@ function initializeToggleFade() {
     updateToggleOpacity();
 }
 
-/** Contact functionality **/
+/** Contact functionality with error handling **/
 function handleContactClick(type, value) {
-    if (type === 'email') {
-        window.location.href = `mailto:${value}`;
-    } else if (type === 'sms') {
-        window.location.href = `sms:${value}`;
+    try {
+        if (type === 'email') {
+            window.location.href = `mailto:${value}`;
+        } else if (type === 'sms') {
+            window.location.href = `sms:${value}`;
+        }
+    } catch (error) {
+        console.error('Error handling contact click:', error);
+        // Fallback: copy to clipboard if available
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(value).then(() => {
+                console.log('Contact info copied to clipboard as fallback');
+            }).catch(err => {
+                console.error('Failed to copy to clipboard:', err);
+            });
+        }
     }
+}
+
+/** Performance optimization: Debounced scroll handler **/
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
 }
