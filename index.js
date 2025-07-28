@@ -1,6 +1,6 @@
 /** Dark mode functionality with system preference detection **/
 function initializeDarkMode() {
-    const toggleButton = document.querySelector('#darkmode-toggle-button input[type="checkbox"]');
+    const toggleButton = document.querySelector('#dark-mode-checkbox');
     const html = document.documentElement;
     
     // Check for saved user preference, otherwise use system preference
@@ -28,7 +28,7 @@ function initializeDarkMode() {
     // Update ARIA state for the toggle container
     const toggleContainer = document.querySelector('#darkmode-toggle-button');
     if (toggleContainer) {
-        toggleContainer.setAttribute('aria-checked', isDarkMode);
+        toggleContainer.setAttribute('aria-checked', isDarkMode.toString());
     }
     
     // Listen for toggle changes
@@ -46,7 +46,7 @@ function initializeDarkMode() {
             // Update ARIA state
             const toggleContainer = document.querySelector('#darkmode-toggle-button');
             if (toggleContainer) {
-                toggleContainer.setAttribute('aria-checked', isDark);
+                toggleContainer.setAttribute('aria-checked', isDark.toString());
             }
         });
         
@@ -78,7 +78,7 @@ function initializeDarkMode() {
             // Update ARIA state
             const toggleContainer = document.querySelector('#darkmode-toggle-button');
             if (toggleContainer) {
-                toggleContainer.setAttribute('aria-checked', isDark);
+                toggleContainer.setAttribute('aria-checked', isDark.toString());
             }
         }
     });
@@ -116,7 +116,7 @@ function setLanguage(lang) {
     // Update ARIA state for dark mode toggle
     const toggleContainer = document.querySelector('#darkmode-toggle-button');
     if (toggleContainer) {
-        toggleContainer.setAttribute('aria-checked', document.documentElement.classList.contains('dark-theme'));
+        toggleContainer.setAttribute('aria-checked', document.documentElement.classList.contains('dark-theme').toString());
     }
     
     // Update flag SVG and button text
