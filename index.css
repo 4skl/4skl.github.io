@@ -142,7 +142,6 @@ body {
 }
 
 .dark-theme body {
-    color: var(--text-light-gray);
     background: linear-gradient(135deg, var(--gradient-default-start) 0%, var(--gradient-default-end) 100%);
 }
 
