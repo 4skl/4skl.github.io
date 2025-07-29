@@ -446,10 +446,8 @@ header {
 }
 
 /* Fallback for smaller screens */
-@media (max-width: 1240px) {
-    .darkmode-toggle {
-        right: 2rem;
-    }
+.darkmode-toggle {
+    right: 2rem;
 }
 
 .darkmode-toggle:hover {
@@ -463,15 +461,8 @@ header {
     left: calc(50% - 450px + 2rem);
     z-index: 1000;
     transition: opacity 0.3s ease;
+    left: 2rem;
 }
-
-/* Fallback for smaller screens */
-@media (max-width: 1240px) {
-    .language-toggle {
-        left: 2rem;
-    }
-}
-
 
 .language-toggle button {
     background: transparent;
