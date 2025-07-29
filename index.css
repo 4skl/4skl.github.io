@@ -43,7 +43,7 @@
     
     --toggle-bg: #000;
     --toggle-slider-bg: #fff;
-    --white-glow: 0px 0px 8px rgba(96, 165, 250, 0.3);
+    --white-glow: 0 0 8px 0 rgba(0, 0, 0, 0.7);
 }
 
 .dark-theme {
@@ -436,18 +436,13 @@ header {
 .darkmode-toggle {
     position: fixed;
     top: 2rem;
-    right: calc(50% - 450px + 2rem);
+    right: 2rem;
     z-index: 1000;
     width: 50px;
     height: 50px;
     margin: 0 auto;
     border-radius: 40px;
     transition: transform 0.2s cubic-bezier(.4,2,.6,1), opacity 0.3s ease;
-}
-
-/* Fallback for smaller screens */
-.darkmode-toggle {
-    right: 2rem;
 }
 
 .darkmode-toggle:hover {
